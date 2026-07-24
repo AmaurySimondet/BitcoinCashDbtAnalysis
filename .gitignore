@@ -12,7 +12,8 @@
 target/
 dbt_packages/
 logs/
-profiles.yml
+/profiles.yml
+!.github/dbt/profiles.yml
 
 # Python
 .venv/
