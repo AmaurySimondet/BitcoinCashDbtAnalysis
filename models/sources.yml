@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: crypto_bitcoin_cash
+    description: BigQuery public Bitcoin Cash blockchain dataset
+    database: bigquery-public-data
+    schema: crypto_bitcoin_cash
+    tables:
+      - name: transactions
+        description: Raw Bitcoin Cash transactions
+        columns:
+          - name: hash
+            description: Transaction hash
+          - name: block_timestamp
+            description: Block timestamp of the transaction
+          - name: is_coinbase
+            description: True if this is a mining reward (coinbase) transaction
