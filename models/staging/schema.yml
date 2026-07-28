@@ -11,11 +11,41 @@ models:
         tests:
           - unique
           - not_null
+      - name: size
+        description: Serialized transaction size in bytes
+      - name: virtual_size
+        description: Virtual size used for fee calculation (weight / 4)
+      - name: version
+        description: Transaction version number
+      - name: lock_time
+        description: Earliest block height or timestamp before which inputs may be spent
+      - name: block_number
+        description: Block height containing this transaction
+      - name: block_hash
+        description: Hash of the block containing this transaction
       - name: block_timestamp
         description: Timestamp of the block containing the transaction
         tests:
           - not_null
+      - name: block_timestamp_month
+        description: Month-truncated block timestamp (source partition column)
       - name: is_coinbase
         description: True when the transaction is a mining coinbase reward
         tests:
           - not_null
+      - name: inputs
+        description: >
+          Array of transaction inputs (spent UTXOs), each with addresses and value in satoshis
+      - name: outputs
+        description: >
+          Array of transaction outputs (created UTXOs), each with addresses and value in satoshis
+      - name: input_count
+        description: Number of inputs in the transaction
+      - name: output_count
+        description: Number of outputs in the transaction
+      - name: input_value
+        description: Total input value in satoshis
+      - name: output_value
+        description: Total output value in satoshis
+      - name: fee
+        description: Transaction fee in satoshis (input_value minus output_value)

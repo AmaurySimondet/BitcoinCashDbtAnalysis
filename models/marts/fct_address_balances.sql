@@ -1,7 +1,8 @@
 {{ config(materialized='table') }}
 
--- Current address balances over the staging window (last 3 months),
--- excluding any address that participated in at least one coinbase tx.
+-- Net balance per address over the staging window (last 3 months) only.
+-- This is NOT a lifetime on-chain balance: only flows within stg_transactions count.
+-- Addresses that received at least one coinbase (mining) reward are excluded.
 
 with coinbase_addresses as (
     select distinct address
@@ -49,6 +50,7 @@ select
     b.address,
     b.balance
 from balances as b
+-- Anti-join: drop any address that ever received a coinbase output.
 left join coinbase_addresses as c
     on b.address = c.address
 where c.address is null

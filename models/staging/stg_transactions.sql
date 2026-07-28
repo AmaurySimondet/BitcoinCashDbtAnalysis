@@ -48,6 +48,8 @@ select
     fee
 from {{ source('crypto_bitcoin_cash', 'transactions') }} as tx
 cross join window_start as w
+-- block_timestamp_month enables partition pruning on the source table;
+-- block_timestamp then trims to the exact 3-month boundary.
 where tx.block_timestamp_month >= w.start_month
   and tx.block_timestamp >= w.start_timestamp
   and tx.block_timestamp <= w.max_block_timestamp
