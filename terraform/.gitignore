@@ -1,0 +1,20 @@
+# Local variable files with secrets / account IDs
+*.tfvars
+!*.tfvars.example
+
+# Terraform state & lock
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Service account keys
+*-key.json
+sa-key.json
+credentials.json

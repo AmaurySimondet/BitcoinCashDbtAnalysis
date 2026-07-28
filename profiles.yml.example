@@ -1,0 +1,17 @@
+# Copy to ~/.dbt/profiles.yml (or set DBT_PROFILES_DIR) and fill in values.
+# Auth: run `gcloud auth application-default login` OR set keyfile path below.
+
+bitcoin_cash_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: bch-dbt-analysis          # GCP project created by Terraform
+      dataset: dbt_dev                   # scratch dataset for dbt internals
+      location: US # must match Terraform datasets + public crypto data
+      threads: 4
+      timeout_seconds: 300
+      priority: interactive
+      # method: service-account
+      # keyfile: /path/to/dbt-runner-key.json

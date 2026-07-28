@@ -1,0 +1,15 @@
+# CI profile — no secrets. Auth via GOOGLE_APPLICATION_CREDENTIALS
+# set by google-github-actions/auth from the GCP_SA_KEY secret.
+
+bitcoin_cash_dbt:
+  target: ci
+  outputs:
+    ci:
+      type: bigquery
+      method: oauth
+      project: bch-dbt-analysis
+      dataset: dbt_ci
+      location: US
+      threads: 4
+      timeout_seconds: 600
+      priority: interactive

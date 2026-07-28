@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_address_balances
+    description: >
+      Data mart of address balances over the last three months of Bitcoin Cash
+      activity. Addresses that received at least one coinbase (mining) reward
+      are excluded.
+    columns:
+      - name: address
+        description: Bitcoin Cash address
+        tests:
+          - unique
+          - not_null
+      - name: balance
+        description: Net balance in satoshis (outputs minus inputs) over the staging window
+        tests:
+          - not_null

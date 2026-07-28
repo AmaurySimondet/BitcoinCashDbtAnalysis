@@ -1,0 +1,33 @@
+# Terraform
+**/.terraform/
+**/.terraform.lock.hcl
+**/*.tfstate
+**/*.tfstate.*
+**/crash.log
+**/crash.*.log
+**/*.tfvars
+!**/*.tfvars.example
+
+# dbt
+target/
+dbt_packages/
+logs/
+/profiles.yml
+!.github/dbt/profiles.yml
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Credentials / secrets
+*-key.json
+sa-key.json
+credentials.json
+.env
+.env.*
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/

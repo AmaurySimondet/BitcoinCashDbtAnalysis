@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: >
+      Staging table of Bitcoin Cash transactions restricted to the last
+      three months from bigquery-public-data.crypto_bitcoin_cash.transactions.
+    columns:
+      - name: transaction_hash
+        description: Unique transaction hash
+        tests:
+          - unique
+          - not_null
+      - name: block_timestamp
+        description: Timestamp of the block containing the transaction
+        tests:
+          - not_null
+      - name: is_coinbase
+        description: True when the transaction is a mining coinbase reward
+        tests:
+          - not_null
